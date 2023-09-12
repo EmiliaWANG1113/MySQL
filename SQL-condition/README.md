@@ -3,7 +3,9 @@
 
 ```sql
 SELECT Combined_Key,
-       Combined_Key LIKE '%, US' as is_us
+       --Combined_Key LIKE '%, US' as is_us
+       CASE WHEN Combined_Key LIKE '%, US' THEN 1
+       ELSE 0 END AS is_us
    FROM daily_report
   ORDER BY is_us;
 ```
